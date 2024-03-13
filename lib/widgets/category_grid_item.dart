@@ -13,24 +13,32 @@ class CategoryGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            category.color.withOpacity(.55),
-            category.color.withOpacity(.9),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+//we can make any widget tappable by wrapping it with inkWell widget or GestureDetector widget.. instead of gestureDectector if we use inkwell, then a visual feedback will also get if the user taps the item..
+
+    return InkWell(
+      onTap: () {},
+      splashColor: Theme.of(context).primaryColor,
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          gradient: LinearGradient(
+            colors: [
+              category.color.withOpacity(.55),
+              category.color.withOpacity(.9),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
         ),
-      ),
-      child: Text(
-        category.title,
-        style: Theme.of(context)
-            .textTheme
-            .titleLarge!
-            .copyWith(color: Theme.of(context).colorScheme.onBackground),
+        child: Text(
+          category.title,
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(color: Theme.of(context).colorScheme.onBackground),
+        ),
       ),
     );
   }
