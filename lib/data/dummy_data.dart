@@ -52,4 +52,14 @@ const availableCategories = [
     title: 'Summer',
     color: Colors.teal,
   ),
+  Category(
+    id: 'c11',
+    title: 'Demo',
+    color: Color.fromARGB(255, 233, 105, 30),
+  ),
+  Category(
+    id: 'c12',
+    title: 'Demo2',
+    color: Color.fromARGB(255, 179, 206, 23),
+  ),
 ];
