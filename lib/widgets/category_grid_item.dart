@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/category.dart';
 
@@ -7,16 +5,19 @@ class CategoryGridItem extends StatelessWidget {
   const CategoryGridItem({
     super.key,
     required this.category,
+    required this.onSelectCategory,
   });
 
   final Category category;
+
+  final void Function() onSelectCategory;
 
   @override
   Widget build(BuildContext context) {
 //we can make any widget tappable by wrapping it with inkWell widget or GestureDetector widget.. instead of gestureDectector if we use inkwell, then a visual feedback will also get if the user taps the item..
 
     return InkWell(
-      onTap: () {},
+      onTap: onSelectCategory,
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(16),
       child: Container(
