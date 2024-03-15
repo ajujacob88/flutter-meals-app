@@ -14,14 +14,10 @@ class MealsScreen extends StatelessWidget {
   final String title;
   final List<Meal> meals;
 
-  void _selectMeals(BuildContext context, String title) {
-    final filteredMealDetails =
-        dummyMeals.where((element) => element.title == title).toList();
-
+  void selectMeal(BuildContext context, Meal meal) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (ctx) =>
-            MealDetailsScreen(title: title, meals: filteredMealDetails),
+        builder: (ctx) => MealDetailsScreen(meal: meal),
       ),
     );
   }
@@ -31,11 +27,10 @@ class MealsScreen extends StatelessWidget {
     Widget content = ListView.builder(
       itemCount: meals.length,
       itemBuilder: (ctx, index) => MealItem(
-        meal: meals[index],
-        onSelectingMeals: () {
-          _selectMeals(context, meals[index].title);
-        },
-      ),
+          meal: meals[index],
+          onSelectMeal: (meal) {
+            selectMeal(context, meal);
+          }),
     );
 
     if (meals.isEmpty) {
