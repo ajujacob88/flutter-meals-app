@@ -42,35 +42,36 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pick your category'),
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: const Text('Pick your category'),
+    //   ),
+//no need of scafold appBar since in the tabScreen, we provided a scafold and appBar title
+
+    return GridView(
+      padding: const EdgeInsets.all(24),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 3 / 2,
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
       ),
-      body: GridView(
-        padding: const EdgeInsets.all(24),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
 
-        children: [
-          for (final category in availableCategories)
-            CategoryGridItem(
-              category: category,
-              onSelectCategory: () {
-                _selectCategory(context, category);
-              },
-            ),
-        ],
+      children: [
+        for (final category in availableCategories)
+          CategoryGridItem(
+            category: category,
+            onSelectCategory: () {
+              _selectCategory(context, category);
+            },
+          ),
+      ],
 
-        //another alternative of using for loop here is using maps
+      //another alternative of using for loop here is using maps
 
-        // children: availableCategories
-        //     .map((category) => CategoryGridItem(category: category))
-        //     .toList(),
-      ),
+      // children: availableCategories
+      //     .map((category) => CategoryGridItem(category: category))
+      //     .toList(),
     );
   }
 }
